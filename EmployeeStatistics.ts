@@ -1,10 +1,10 @@
-interface Employee {
+export interface Employee {
     name: string;
     age: number;
     salary: number;
 }
 
-class EmployeeStatistics {
+export class EmployeeStatistics {
     employees: Employee[];
     constructor(employee_list: Employee[]) {
         if (employee_list.length == 0) {
