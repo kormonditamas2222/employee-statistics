@@ -33,4 +33,13 @@ class EmployeeStatistics {
         let ourEmployee = this.employees.findIndex(e => e.age == max);
         return this.employees[ourEmployee]!;
     }
+    countEmployeesOverSalary(salary: number) : number {
+        let count = 0;
+        for (const employee of this.employees) {
+            if (employee.salary > salary) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
