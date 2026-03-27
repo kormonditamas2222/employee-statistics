@@ -21,4 +21,16 @@ class EmployeeStatistics {
         }
         return max;
     }
+    getAverageAge() : number {
+        let sum = 0;
+        for (const employee of this.employees) {
+            sum += employee.age;
+        }
+        return sum / this.employees.length;
+    }
+    getHighestPaidEmployee() : Employee {
+        let max = this.getMaxSalary();
+        let ourEmployee = this.employees.findIndex(e => e.age == max);
+        return this.employees[ourEmployee]!;
+    }
 }
