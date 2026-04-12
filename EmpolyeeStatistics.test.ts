@@ -76,3 +76,29 @@ describe("getHighestPaidEmployee()", () => {
         expect(new EmployeeStatistics(negList).getHighestPaidEmployee()).toBeUndefined();
     })
 })
+describe("countEmployeesOverSalary()", () => {
+    test("0 legyen értékre", () => {
+        expect(stat1.countEmployeesOverSalary(900001)).toEqual(0);
+    })
+    test("0 legyen értékre 2", () => {
+        expect(stat2.countEmployeesOverSalary(1500001)).toEqual(0);
+    })
+    test("valamilyen értékre valami", () => {
+        expect(stat1.countEmployeesOverSalary(669422)).toEqual(1);
+    })
+    test("valamilyen értékre valami 2", () => {
+        expect(stat2.countEmployeesOverSalary(733100)).toEqual(2);
+    })
+    test("3 legyen értékre", () => {
+        expect(stat1.countEmployeesOverSalary(13)).toEqual(3);
+    })
+    test("3 legyen értékre 2", () => {
+        expect(stat2.countEmployeesOverSalary(131313)).toEqual(3);
+    })
+    test("üres bemenet", () => {
+        expect(stat1.countEmployeesOverSalary()).toEqual(0); // ez miért van így
+    })
+    test("szöveg bemenet", () => {
+        expect(stat2.countEmployeesOverSalary("count this")).toEqual(0);
+    })
+})
