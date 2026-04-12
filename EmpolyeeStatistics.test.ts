@@ -62,5 +62,17 @@ describe("getAverageAge()", () => {
     })
 })
 describe("getHighestPaidEmployee()", () => {
-    test("helyes eredmény első adathalmazzal")
+    test("helyes eredmény első adathalmazzal", () => {
+        expect(stat1.getHighestPaidEmployee()).toEqual({name: "Minta Ádám", age: 67, salary: 900000})
+    })
+    test("helyes eredmény másik adathalmazzal", () => {
+        expect(stat2.getHighestPaidEmployee()).toEqual({name: "Barna Bernát", age: 42, salary: 1500000})
+    })
+    test("negatív szám", () => {
+        let negList: Employee[] = [
+            {name: "feri", age: 32, salary: -1},
+            {name: "matyi", age: 23, salary: -2}
+        ]
+        expect(new EmployeeStatistics(negList).getHighestPaidEmployee()).toBeUndefined();
+    })
 })

@@ -30,7 +30,7 @@ export class EmployeeStatistics {
     }
     getHighestPaidEmployee() : Employee {
         let max = this.getMaxSalary();
-        let ourEmployee = this.employees.findIndex(e => e.age == max);
+        let ourEmployee = this.employees.findIndex(e => e.salary == max);
         return this.employees[ourEmployee]!;
     }
     countEmployeesOverSalary(salary: number) : number {
