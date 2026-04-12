@@ -25,7 +25,7 @@ beforeEach(() => {
 
 describe("EmployeeStatistics()", () => {
     test("osztály létrehozása listában elemekkel", () => {
-        expect(() => new EmployeeStatistics(list)).not.toThrow();
+        expect(() => stat1).not.toThrow();
     })
     test("osztály létrehozása üres listával", () => {
         expect(() => new EmployeeStatistics(lista)).toThrow();
@@ -41,5 +41,26 @@ describe("getMaxSalary()", () => {
     test("helyes eredmény másik adathalmazzal", () => {
         expect(stat2.getMaxSalary()).toBe(1500000);
     })
-    
+    test("bér nagyobb mint 1000000", () => {
+        expect(stat1.getMaxSalary()).not.toBeGreaterThan(1000000);
+        expect(stat2.getMaxSalary()).toBeGreaterThan(1000000);
+    })
+})
+describe("getAverageAge()", () => {
+    test("helyes eredmény első adathalmazzal", () => {
+        expect(stat1.getAverageAge().toPrecision(4)).toBe(52.33.toPrecision(4));
+    })
+    test("helyes eredmény másik adathalmazzal", () => {
+        expect(stat2.getAverageAge()).toBe(34);
+    })
+    test("helyes eredmény egy amúgy rossz adathalmazzal", () => {
+        let zeroList: Employee[] = [
+            {name: "feri", age: 0, salary: 211212},
+            {name: "matyi", age: 0, salary: 5435335}
+        ]
+        expect(new EmployeeStatistics(zeroList).getAverageAge()).toBe(0);
+    })
+})
+describe("getHighestPaidEmployee()", () => {
+    test("helyes eredmény első adathalmazzal")
 })
